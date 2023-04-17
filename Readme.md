@@ -37,4 +37,4 @@ localhost:8080
 
 
 ## Contact
-mail : 21f2000879@student.onlinedegree.iitm.ac.in
+mail : mehta.jayvin@gmail.com
