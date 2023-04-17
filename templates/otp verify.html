@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Otp Verification</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <h2><img src="./static/logo.png" alt="logo" width="70" height="50" class="d-inline-block align-text-top">Quantified Self</h2>
+      </a>
+      <div class="d-flex">
+        <a type="button" class="btn btn-light me-2" href="{{url_for('signin')}}" >Sign In</a>
+        <a type="button" class="btn btn-light" href="{{url_for('signup')}}" >Sign Up</a>
+      </div>
+    </div>
+  </nav>
+</head>
+<body>
+  <section class="vh-100" style="background-color:  hsl(0, 0%, 96%)">
+    <div class="container py-5 h-10">
+      <div class="row d-flex justify-content-center align-items-center h-20">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <div class="form-outline mb-4">
+                {%for message in get_flashed_messages() %}
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                      </div>
+                    {% endfor %}
+                <form action="{{url_for('otp')}}" method="POST">
+                <input type="password" name="otp"  class="form-control" placeholder="Enter OTP" required />
+                <div class='col-md-1 pull-left'>
+                <label class="control-label">OTP</label>
+              </div>
+              {% if flag %}
+              <br>
+              <input type="password" name="new_password"  class="form-control" placeholder="Enter New Password" required />
+                <div class='col-md-3 pull-left'>
+                <label class="control-label">New Password</label>
+              </div>
+              {% endif %}
+              </div>
+              <button class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
